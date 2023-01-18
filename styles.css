@@ -10,50 +10,43 @@ body {
   display: flex;
   justify-content: center;
 }
-body .mainContent {
+body .calcDisplay {
   background-color: white;
-  height: 100vh;
+  height: 90vh;
   width: 40%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   margin: 2%;
+  color: white;
 }
-body .mainContent .answerContainer {
-  margin-top: 2%;
-  margin-bottom: 2%;
-  width: 90%;
+body .calcDisplay .answerContainer {
+  width: 70%;
   height: 10%;
-  background-color: rgb(225, 244, 250);
 }
-body .mainContent .answerContainer p {
-  background-color: rgb(225, 244, 250);
+body .calcDisplay .answerContainer p {
   text-align: right;
 }
-body .mainContent .commandContainer {
+body .calcDisplay .commandContainer {
   background-color: white;
-  width: 90%;
-  height: 90%;
+  width: 70%;
+  height: 70%;
   display: grid;
+  grid-gap: 2px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
 }
-body .mainContent .commandContainer a {
+body .calcDisplay .commandContainer a {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  margin: 5%;
-  background-color: lightblue;
+  height: 100%;
+  background-color: rgb(12, 12, 51);
 }
-body .mainContent .commandContainer #buttonZero {
+body .calcDisplay .commandContainer #buttonZero {
   grid-row-start: 5;
   grid-row-end: 5;
   grid-column-start: 1;
   grid-column-end: 3;
-  width: 300px;
-  border-radius: 15%;
 }/*# sourceMappingURL=styles.css.map */
