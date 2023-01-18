@@ -36,9 +36,10 @@ const division = (firstNumber, secondNumber) => firstNumber/secondNumber
 const calculate = (calculateArray) => {
     let totalValue = 0
     for (let index = 0; index < calculateArray.length; index++) {
-        let currentOperative = 0
+        let currentOperative = ""
         
         const currentTask = calculateArray[index];
+        console.log(currentTask)
         switch (currentTask){
 
             case "+":
@@ -63,30 +64,25 @@ const calculate = (calculateArray) => {
 
             //OCCURS IF ITS A NUMBER
             default:
-                if (totalValue !== 0){
-                    console.log(currentOperative)
-                    switch(currentOperative){
-                        case "+":
-                            console.log("AHA2")
-                            totalValue = addition(totalValue, currentTask);
-                            console.log(totalValue);
-                            break;
-            
-                        case "*":
-                            totalValue = multiplication(totalValue, currentTask);
-                            console.log(totalValue);
-                            break;
-            
-                        case "-":
-                            totalValue = substration(totalValue, currentTask);
-                            console.log(totalValue);
-                            break;
-            
-                        case "/":
-                            totalValue = division(totalValue, currentTask);
-                            console.log(totalValue);
-                            break;
+                if (totalValue > 0){
+                    console.log("test")
+                    if (currentOperative == "+"){
+                        console.log("AHA2")
+                        totalValue = addition(totalValue, currentTask);
+                        console.log(totalValue);
                     }
+                    else if (currentOperative == "-"){
+                        totalValue = substration(totalValue, currentTask);
+                        console.log(totalValue);
+                    }
+                    else if (currentOperative == "*"){
+                        totalValue = multiplication(totalValue, currentTask);
+                        console.log(totalValue);
+                    }
+                    else {
+                        totalValue = division(totalValue, currentTask);
+                        console.log(totalValue);
+                    } 
                 }
                 else{
                     totalValue = currentTask; 
@@ -99,5 +95,5 @@ const calculate = (calculateArray) => {
 
 
 
-
+console.log(addition(10, 50));
 console.log(calculate(calculations));
