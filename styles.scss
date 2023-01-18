@@ -16,7 +16,8 @@ body {
   .calcDisplay {
     background-color: white;
     height: 90vh;
-    width: 40%;
+    width: 90%;
+    max-width: 1000px;
     display: flex;
     align-items: center;
   
@@ -27,7 +28,7 @@ body {
     .answerContainer {
       margin-top: 5%;
       width: 90%;
-      height: 10%;
+      height: 12%;
       display: flex;
       align-items: center;
       justify-content: flex-end;
