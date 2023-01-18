@@ -21,25 +21,26 @@ body .calcDisplay {
   color: white;
 }
 body .calcDisplay .answerContainer {
+  color: black;
   margin-top: 5%;
-  width: 90%;
+  width: 80%;
   height: 12%;
   max-height: 1000px;
   max-width: 1200px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  background-color: rgb(125, 125, 155);
+  background-color: rgb(255, 255, 255);
 }
 body .calcDisplay .answerContainer p {
   font-size: 2rem;
   margin-right: 2%;
-  background-color: rgb(125, 125, 155);
+  background-color: rgb(255, 255, 255);
   text-align: right;
 }
 body .calcDisplay .commandContainer {
   background-color: rgb(191, 191, 191);
-  width: 90%;
+  width: 80%;
   height: 80%;
   max-height: 1000px;
   max-width: 1200px;
