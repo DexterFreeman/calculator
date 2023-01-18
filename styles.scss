@@ -1,65 +1,65 @@
-*{
-    margin: 0;
-    padding: 0;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    background-color: lightgrey;
-    font-size: 1.8rem;
+$button-color: rgb(12, 12, 51);
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  background-color: lightgrey;
+  font-size: 1.8rem;
 }
-body{
+body {
+  display: flex;
+  justify-content: center;
+
+  .calcDisplay {
+    background-color: white;
+    height: 90vh;
+    width: 40%;
     display: flex;
+    align-items: center;
     justify-content: center;
-   
-    .calcDisplay{
-        background-color: white;
-        height: 90vh;
-        width: 40%;
+    flex-direction: column;
+    margin: 2%;
+    color: white;
+
+    .answerContainer {
+      width: 70%;
+      height: 10%;
+
+      p {
+        text-align: right;
+      }
+    }
+
+    .commandContainer {
+      background-color: rgb(191, 191, 191);
+
+      width: 70%;
+      height: 70%;
+      display: grid;
+      grid-gap: 2px;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr;
+      a {
         display: flex;
-        align-items: center;
         justify-content: center;
-        flex-direction: column;
-        margin: 2%;
-        color: white;
+        align-items: center;
+        height: 165px;
 
-    .answerContainer{
-        width: 70%;
-        height: 10%;
-        
-        p{
-            text-align: right;
-        }
+        background-color: $button-color;
+      }
+      #buttonEquals {
+        grid-row-start: 5;
+        grid-row-end: 5;
+        grid-column-start: 3;
+        grid-column-end: 5;
+      }
+      a:hover {
+        background-color: rgb(31, 31, 84);
+      }
+      a:active {
+        background-color: rgb(63, 63, 124);
+      }
     }
-    
-
-    .commandContainer{
-        background-color: white;
-   
-        width: 70%;
-        height: 70%;
-        display: grid;
-        grid-gap: 2px;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr;
-        a{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            
-  
-            background-color: rgb(12, 12, 51);
-
-            
-        }
-        #buttonZero{
-            grid-row-start: 5;
-            grid-row-end: 5;
-            grid-column-start: 1;
-            grid-column-end: 3;
-
-    
-        }
-        
-    }
+  }
 }
-}
-
