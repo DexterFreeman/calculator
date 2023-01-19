@@ -38,7 +38,7 @@ body .calcDisplay .answerContainer p {
   background-color: rgb(255, 255, 255);
   text-align: right;
 }
-body .calcDisplay .commandContainer {
+body .calcDisplay .calcContainer {
   background-color: rgb(191, 191, 191);
   width: 80%;
   height: 80%;
@@ -49,21 +49,21 @@ body .calcDisplay .commandContainer {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 }
-body .calcDisplay .commandContainer a {
+body .calcDisplay .calcContainer a {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgb(12, 12, 51);
 }
-body .calcDisplay .commandContainer #buttonEquals {
+body .calcDisplay .calcContainer #buttonEquals {
   grid-row-start: 5;
   grid-row-end: 5;
   grid-column-start: 3;
   grid-column-end: 5;
 }
-body .calcDisplay .commandContainer a:hover {
+body .calcDisplay .calcContainer a:hover {
   background-color: rgb(31, 31, 84);
 }
-body .calcDisplay .commandContainer a:active {
+body .calcDisplay .calcContainer a:active {
   background-color: rgb(63, 63, 124);
 }/*# sourceMappingURL=styles.css.map */
