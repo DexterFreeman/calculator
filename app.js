@@ -8,17 +8,16 @@ const numberDisplay = document.getElementById("answerDisplay")
 
 
 const handleOperator = (event) => {
-    console.log(event.target.innerText)
+    console.log("OPERATOR" + event.target.innerText)
     numberDisplay.innerText += event.target.innerText    
 }
 
 const handleCommand = (event) => {
-    console.log(event.target.innerText)
-    numberDisplay.innerText += event.target.innerText
+    console.log("COMMAND" + event.target.innerText)
 }
 
 const handleNumber = (event) => {
-    console.log(event.target.innerText)
+    console.log("NUMBER" + event.target.innerText)
     numberDisplay.innerText += event.target.innerText
 }
 
@@ -30,8 +29,8 @@ operators.forEach(element => {
     element.addEventListener("click", handleOperator)
 });
 commands.forEach(element => {
-    element.addEventListener("click", handleOperator)
+    element.addEventListener("click", handleCommand)
 });
 numbers.forEach(element => {
-    element.addEventListener("click", handleOperator)
+    element.addEventListener("click", handleNumber)
 });
