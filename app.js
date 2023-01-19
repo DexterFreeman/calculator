@@ -20,7 +20,7 @@ const convertString = (stringToConvert) => {
     let convertedArr = []
     let currentString = ""
     for (let index = 0; index < stringToConvert.length; index++) {
-        const element = calculationsString[index];
+        const element = stringToConvert[index];
         if (index == stringToConvert.length-1){
             convertedArr.push(element)
         }
@@ -37,6 +37,7 @@ const convertString = (stringToConvert) => {
             currentString = ""
          } 
     }
+    console.log(convertedArr);
     return convertedArr;
 }
 
@@ -116,7 +117,8 @@ const handleCommand = (event) => {
         numberDisplay.innerText = "0"
     }
     else if (event.target.innerText == "="){
-        numberDisplay.innerText = calculate(numberDisplay.innerText);
+        let commandString = convertString(numberDisplay.innerText)
+        numberDisplay.innerText = calculate(commandString);
     }
     console.log("COMMAND " + event.target.innerText)
 }
