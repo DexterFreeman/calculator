@@ -23,8 +23,37 @@
 //to do more, push that value to array once calculations are done after pressing
 // =.
 
+const calculationsString = "10-9"
+//need to go from string to this array
+const convertString = (stringToConvert) => {
+    let convertedArr = []
+    let currentString = ""
+    for (let index = 0; index < stringToConvert.length; index++) {
+        const element = calculationsString[index];
+        if (index == stringToConvert.length-1){
+            convertedArr.push(element)
+        }
+        else if (parseInt(element) || element == "0"){
+            currentString = currentString.concat(element)
+        }
+        else if (element == "."){
+            currentString = currentString.concat(element)
+    
+        }
+        else{
+            if (currentString){convertedArr.push(currentString)}
+            convertedArr.push(element)
+            currentString = ""
+         } 
+    }
+    return convertedArr;
+}
 
-const calculations = [10, "+", 24];
+
+console.log(convertString(calculationsString));
+
+
+const calculations = ["10", "-", "9"];
 
 const addition = (firstNumber, secondNumber) => firstNumber+secondNumber
 const substration = (firstNumber, secondNumber) => firstNumber-secondNumber
@@ -35,65 +64,62 @@ const division = (firstNumber, secondNumber) => firstNumber/secondNumber
 //Will be called when user presses =
 const calculate = (calculateArray) => {
     let totalValue = 0
-    for (let index = 0; index < calculateArray.length; index++) {
-        let currentOperative = ""
-        
-        const currentTask = calculateArray[index];
-        console.log(currentTask)
-        switch (currentTask){
+    let currentOperative = ""
 
+    for (let index = 0; index < calculateArray.length; index++) {
+        const currentTask = calculateArray[index];
+        console.log("Current Task " + currentTask)
+        console.log("Total value " + totalValue)
+
+        switch (currentTask){
             case "+":
-                console.log("+")
                 currentOperative = "+"
                 break;
 
             case "*":
-                console.log("*")
                 currentOperative = "*"
                 break;
 
-            case "-":
-                console.log("-")
+            case "-": 
                 currentOperative = "-"
                 break;
 
             case "/":
-                console.log("/")
                 currentOperative = "/"
                 break;
 
             //OCCURS IF ITS A NUMBER
             default:
                 if (totalValue > 0){
-                    console.log("test")
                     if (currentOperative == "+"){
-                        console.log("AHA2")
                         totalValue = addition(totalValue, currentTask);
                         console.log(totalValue);
                     }
+
                     else if (currentOperative == "-"){
                         totalValue = substration(totalValue, currentTask);
                         console.log(totalValue);
                     }
+
                     else if (currentOperative == "*"){
                         totalValue = multiplication(totalValue, currentTask);
                         console.log(totalValue);
                     }
-                    else {
+
+                    else if (currentOperative == "/") {
                         totalValue = division(totalValue, currentTask);
                         console.log(totalValue);
                     } 
                 }
+
                 else{
                     totalValue = currentTask; 
                 }
         }
-        
     }
     return totalValue;
 }
 
 
 
-console.log(addition(10, 50));
 console.log(calculate(calculations));
