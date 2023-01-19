@@ -57,7 +57,7 @@ const calculate = (calculateArray) => {
                 break;
 
             case "*":
-                currentOperative = "*"
+                currentOperative = "x"
                 break;
 
             case "-": 
@@ -81,7 +81,7 @@ const calculate = (calculateArray) => {
                         console.log(totalValue);
                     }
 
-                    else if (currentOperative == "*"){
+                    else if (currentOperative == "x"){
                         totalValue = multiplication(totalValue, currentTask);
                         console.log(totalValue);
                     }

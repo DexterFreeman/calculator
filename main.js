@@ -55,10 +55,10 @@ console.log(convertString(calculationsString));
 
 const calculations = ["10", "-", "9"];
 
-const addition = (firstNumber, secondNumber) => firstNumber+secondNumber
-const substration = (firstNumber, secondNumber) => firstNumber-secondNumber
-const multiplication = (firstNumber, secondNumber) => firstNumber*secondNumber
-const division = (firstNumber, secondNumber) => firstNumber/secondNumber
+const addition = (firstNumber, secondNumber) => parseInt(firstNumber) + parseInt(secondNumber)
+const substration = (firstNumber, secondNumber) => parseInt(firstNumber) - parseInt(secondNumber)
+const multiplication = (firstNumber, secondNumber) => parseInt(firstNumber) * parseInt(secondNumber)
+const division = (firstNumber, secondNumber) => parseInt(firstNumber) / parseInt(secondNumber)
 
 
 //Will be called when user presses =
