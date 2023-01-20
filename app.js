@@ -56,7 +56,7 @@ const calculate = (calculateArray) => {
                 currentOperative = "+"
                 break;
 
-            case "*":
+            case "x":
                 currentOperative = "x"
                 break;
 
@@ -70,26 +70,30 @@ const calculate = (calculateArray) => {
 
             //OCCURS IF ITS A NUMBER
             default:
-                if (totalValue > 0){
+                if (index > 0){
                     if (currentOperative == "+"){
-                        totalValue = addition(totalValue, currentTask);
-                        console.log(totalValue);
+                        totalValue = addition(parseFloat(totalValue), parseFloat(currentTask));
+                        console.log("AFTER CALCULATION +" + totalValue);
                     }
 
                     else if (currentOperative == "-"){
-                        totalValue = substration(totalValue, currentTask);
-                        console.log(totalValue);
+                        totalValue = substration(parseFloat(totalValue), parseFloat(currentTask));
+                        console.log("AFTER CALCULATION -" + totalValue);
                     }
 
                     else if (currentOperative == "x"){
-                        totalValue = multiplication(totalValue, currentTask);
-                        console.log(totalValue);
+                        totalValue = multiplication(parseFloat(totalValue), parseFloat(currentTask));
+                        console.log("AFTER CALCULATION x" + totalValue);
                     }
 
                     else if (currentOperative == "/") {
-                        totalValue = division(totalValue, currentTask);
-                        console.log(totalValue);
+                        totalValue = division(parseFloat(totalValue), parseFloat(currentTask));
+                        console.log("AFTER CALCULATION /" + totalValue);
                     } 
+                    else{
+                        console.log("This shouldnt happen");
+                    }
+
                 }
 
                 else{
