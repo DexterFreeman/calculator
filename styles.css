@@ -50,12 +50,6 @@ body .calculator .calculator__buttons a {
   align-items: center;
   background-color: rgb(12, 12, 51);
 }
-body .calculator .calculator__buttons #buttonEquals {
-  grid-row-start: 5;
-  grid-row-end: 5;
-  grid-column-start: 3;
-  grid-column-end: 5;
-}
 body .calculator .calculator__buttons a:hover {
   background-color: rgb(31, 31, 84);
 }

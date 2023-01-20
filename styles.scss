@@ -30,6 +30,7 @@ body {
             justify-content: flex-end;
             background-color: $display-color;
             max-width: 100%;
+
             overflow: hidden;
 
             p {
@@ -59,12 +60,6 @@ body {
                 background-color: $button-color;
             }
 
-            #buttonEquals {
-                grid-row-start: 5;
-                grid-row-end: 5;
-                grid-column-start: 3;
-                grid-column-end: 5;
-            }
 
             a:hover {
                 background-color: rgb(31, 31, 84);
