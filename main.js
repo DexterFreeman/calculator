@@ -68,8 +68,7 @@ const convertString = (stringToConvert) => {
 console.log(convertString(calculationsString));
 
 */
-const calculations = ["3", "%", "10", "+", "15"]
-
+const calculations = ["4.874915326E7", "-", "1000",]
 const addition = (firstNumber, secondNumber) => parseInt(firstNumber) + parseInt(secondNumber)
 const substration = (firstNumber, secondNumber) => parseInt(firstNumber) - parseInt(secondNumber)
 const multiplication = (firstNumber, secondNumber) => parseInt(firstNumber) * parseInt(secondNumber)
@@ -82,7 +81,10 @@ const calculate = (calculateArray) => {
     let currentOperative = ""
 
     for (let index = 0; index < calculateArray.length; index++) {
-        const currentTask = calculateArray[index];
+        let currentTask = calculateArray[index];
+        if (currentTask.includes("E")){
+            currentTask = new Number(currentTask)
+        }
         console.log("Current Task " + currentTask)
         console.log("Total value " + totalValue)
 

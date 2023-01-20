@@ -22,7 +22,7 @@ const convertString = (stringToConvert) => {
     for (let index = 0; index < stringToConvert.length; index++) {
         const element = stringToConvert[index];
 
-        
+
         //If it is the last item to add then:
         if (index == stringToConvert.length-1){
             //Push any previous item
@@ -39,7 +39,7 @@ const convertString = (stringToConvert) => {
             }
         }
 
-        else if (parseInt(element) || element == "0" || element == "."){
+        else if (parseInt(element) || element == "0" || element == "." || element == "e"){
             currentString = currentString.concat(element)
         }
 
@@ -60,7 +60,10 @@ const calculate = (calculateArray) => {
     let currentOperative = ""
 
     for (let index = 0; index < calculateArray.length; index++) {
-        const currentTask = calculateArray[index];
+        let currentTask = calculateArray[index];
+        if (currentTask.includes("e")){
+            currentTask = new Number(currentTask)
+        }
         switch (currentTask){
             case "+":
                 currentOperative = "+"
