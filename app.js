@@ -18,9 +18,9 @@ const convertString = (stringToConvert) => {
     let convertedArr = []
     let currentString = ""
     let pushCount = 0;
+
     for (let index = 0; index < stringToConvert.length; index++) {
         const element = stringToConvert[index];
-
         //If it is the last item to add then:
         if (index == stringToConvert.length-1){
             //Push any previous item
@@ -72,6 +72,10 @@ const calculate = (calculateArray) => {
                 currentOperative = "+"
                 break;
 
+            case "%":
+                currentOperative = "%"
+                break;
+
             case "x":
                 currentOperative = "x"
                 break;
@@ -96,6 +100,10 @@ const calculate = (calculateArray) => {
                         totalValue = substration(parseFloat(totalValue), parseFloat(currentTask));
                         console.log("AFTER CALCULATION -" + totalValue);
                     }
+                    else if (currentOperative == "%"){
+                        totalValue = percentage(totalValue, currentTask);
+                        console.log(totalValue);
+                    }
 
                     else if (currentOperative == "x"){
                         totalValue = multiplication(parseFloat(totalValue), parseFloat(currentTask));
@@ -107,7 +115,7 @@ const calculate = (calculateArray) => {
                         console.log("AFTER CALCULATION /" + totalValue);
                     } 
                     else{
-                        console.log("This shouldnt happen");
+                        console.log("This shouldnt happen D:");
                     }
 
                 }
@@ -159,10 +167,6 @@ const handleNumber = (event) => {
     }
     
 }
-
-
-
-
 
 operators.forEach(element => {
     element.addEventListener("click", handleOperator)

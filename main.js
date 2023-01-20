@@ -21,8 +21,8 @@
 
 //simply store the result in a public variable, so that if the user wants
 //to do more, push that value to array once calculations are done after pressing
-// =.
-
+// =
+/*
 const calculationsString = "10-9"
 //need to go from string to this array
 const convertString = (stringToConvert) => {
@@ -67,14 +67,14 @@ const convertString = (stringToConvert) => {
 
 console.log(convertString(calculationsString));
 
-
-const calculations = ["10", "-", "9"];
+*/
+const calculations = ["3", "%", "10", "+", "15"]
 
 const addition = (firstNumber, secondNumber) => parseInt(firstNumber) + parseInt(secondNumber)
 const substration = (firstNumber, secondNumber) => parseInt(firstNumber) - parseInt(secondNumber)
 const multiplication = (firstNumber, secondNumber) => parseInt(firstNumber) * parseInt(secondNumber)
 const division = (firstNumber, secondNumber) => parseInt(firstNumber) / parseInt(secondNumber)
-
+const percentage = (firstnumber, secondNumber) => (100 * firstnumber) / secondNumber
 
 //Will be called when user presses =
 const calculate = (calculateArray) => {
@@ -99,6 +99,10 @@ const calculate = (calculateArray) => {
                 currentOperative = "-"
                 break;
 
+            case "%":
+                currentOperative = "%"
+                break;
+
             case "/":
                 currentOperative = "/"
                 break;
@@ -113,6 +117,10 @@ const calculate = (calculateArray) => {
 
                     else if (currentOperative == "-"){
                         totalValue = substration(totalValue, currentTask);
+                        console.log(totalValue);
+                    }
+                    else if (currentOperative == "%"){
+                        totalValue = percentage(totalValue, currentTask);
                         console.log(totalValue);
                     }
 
