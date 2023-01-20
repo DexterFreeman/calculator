@@ -19,10 +19,24 @@ const division = (firstNumber, secondNumber) => firstNumber/secondNumber
 const convertString = (stringToConvert) => {
     let convertedArr = []
     let currentString = ""
+    let pushCount = 0;
     for (let index = 0; index < stringToConvert.length; index++) {
         const element = stringToConvert[index];
+
+        //If it is the last item to add then:
         if (index == stringToConvert.length-1){
-            convertedArr.push(element)
+            //Push any previous item
+            convertedArr.push(currentString)
+            //If the last item pushed was a number then:
+            if (parseInt(convertedArr[pushCount]) || convertedArr[pushCount] == 0){
+                //Concat the current element to it e.g in string +22 this will result in the interaction of
+                //[+, 2] -> [+, 22]
+                convertedArr[pushCount] =convertedArr[pushCount].concat(element)
+            }
+            else {
+                //Otherwise push it. 
+                convertedArr.push(element)
+            }
         }
         else if (parseInt(element) || element == "0"){
             currentString = currentString.concat(element)
@@ -32,15 +46,17 @@ const convertString = (stringToConvert) => {
     
         }
         else{
-            if (currentString){convertedArr.push(currentString)}
+            if (currentString){convertedArr.push(currentString); pushCount++}
             convertedArr.push(element)
+            pushCount++
             currentString = ""
          } 
     }
-    console.log(convertedArr);
     return convertedArr;
 }
 
+
+console.log(convertString("54-1*3+2"))
 //Takes in the array and calculates the final result. 
 const calculate = (calculateArray) => {
     let totalValue = 0
@@ -118,7 +134,7 @@ const handleCommand = (event) => {
         numberDisplay.innerText = numberDisplay.innerText.substring(0, numberDisplay.innerText.length-1)
     }
     else if (event.target.innerText == "C"){
-        numberDisplay.innerText = "0"
+        numberDisplay.innerText = ""
     }
     else if (event.target.innerText == "="){
         let commandString = convertString(numberDisplay.innerText)
