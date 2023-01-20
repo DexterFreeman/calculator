@@ -1,37 +1,30 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:100);
 $button-color: rgb(12, 12, 51);
 $display-color: rgb(255, 255, 255);
 
 * {
     margin: 0;
     padding: 0;
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-family: Roboto, sans-serif;
     background-color: lightgrey;
     font-size: 1.8rem;
 }
 
 body {
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100vh;
+    background: linear-gradient(#8b9da9, #fff6e4);
+    color: white;
+    .calculator {
+        width: 50vw;
+        max-width: 50vw;
+        box-shadow: 0 0 75px 30px rgba(#cdcdcd, 0.7);
 
-    .calcDisplay {
-
-        background: linear-gradient(90deg, rgba(6, 195, 187, 1) 0%, rgba(0, 255, 226, 1) 100%);
-        height: 100%;
-        width: 100%;
-        display: flex;
-        align-items: center;
-
-        flex-direction: column;
-        color: white;
-
-        .answerContainer {
+        .calculator__display {
             color: black;
-            margin-top: 5%;
-            width: 80%;
-            height: 12%;
-            max-height: 1000px;
-            max-width: 1200px;
             display: flex;
             align-items: center;
             justify-content: flex-end;
@@ -45,13 +38,8 @@ body {
             }
         }
 
-        .calcContainer {
+        .calculator__buttons {
             background-color: rgb(191, 191, 191);
-
-            width: 80%;
-            height: 80%;
-            max-height: 1000px;
-            max-width: 1200px;
             display: grid;
             grid-gap: 2px;
             grid-template-columns: 1fr 1fr 1fr 1fr;

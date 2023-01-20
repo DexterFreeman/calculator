@@ -1,5 +1,3 @@
-console.log("Hello world")
-
 const operators = document.querySelectorAll(".operator");
 const commands = document.querySelectorAll(".command");
 const numbers = document.querySelectorAll(".number");
@@ -38,13 +36,15 @@ const convertString = (stringToConvert) => {
                 convertedArr.push(element)
             }
         }
+
         else if (parseInt(element) || element == "0"){
             currentString = currentString.concat(element)
         }
+
         else if (element == "."){
             currentString = currentString.concat(element)
-    
         }
+
         else{
             if (currentString){convertedArr.push(currentString); pushCount++}
             convertedArr.push(element)
@@ -52,11 +52,11 @@ const convertString = (stringToConvert) => {
             currentString = ""
          } 
     }
+    console.log(convertedArr);
     return convertedArr;
 }
 
 
-console.log(convertString("54-1*3+2"))
 //Takes in the array and calculates the final result. 
 const calculate = (calculateArray) => {
     let totalValue = 0
