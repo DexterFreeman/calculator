@@ -9,7 +9,7 @@ const addition = (firstNumber, secondNumber) => firstNumber+secondNumber
 const substration = (firstNumber, secondNumber) => firstNumber-secondNumber
 const multiplication = (firstNumber, secondNumber) => firstNumber*secondNumber
 const division = (firstNumber, secondNumber) => firstNumber/secondNumber
-
+const percentage = (firstnumber, secondNumber) => (100 * firstnumber) / secondNumber
 
 
 //Converts string of calculation into a usable array
@@ -131,10 +131,16 @@ const handleOperator = (event) => {
 
 const handleCommand = (event) => {
     if (event.target.innerText == "Del"){
-        numberDisplay.innerText = numberDisplay.innerText.substring(0, numberDisplay.innerText.length-1)
+        if (numberDisplay.innerText.length == 1){
+            numberDisplay.innerText = "0"
+        }
+        else{
+            numberDisplay.innerText = numberDisplay.innerText.substring(0, numberDisplay.innerText.length-1)
+        }
+        
     }
     else if (event.target.innerText == "C"){
-        numberDisplay.innerText = ""
+        numberDisplay.innerText = "0"
     }
     else if (event.target.innerText == "="){
         let commandString = convertString(numberDisplay.innerText)
@@ -145,7 +151,13 @@ const handleCommand = (event) => {
 
 const handleNumber = (event) => {
     console.log("NUMBER " + event.target.innerText)
-    numberDisplay.innerText += event.target.innerText
+    if (numberDisplay.innerText == "0"){
+        numberDisplay.innerText = event.target.innerText
+    }
+    else{
+        numberDisplay.innerText += event.target.innerText
+    }
+    
 }
 
 
