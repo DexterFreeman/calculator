@@ -29,8 +29,11 @@ body {
             align-items: center;
             justify-content: flex-end;
             background-color: $display-color;
+            max-width: 100%;
+            overflow: hidden;
 
             p {
+              
                 font-size: 2rem;
                 margin-right: 2%;
                 background-color: $display-color;

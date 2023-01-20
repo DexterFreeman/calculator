@@ -21,6 +21,8 @@ const convertString = (stringToConvert) => {
 
     for (let index = 0; index < stringToConvert.length; index++) {
         const element = stringToConvert[index];
+
+        
         //If it is the last item to add then:
         if (index == stringToConvert.length-1){
             //Push any previous item
@@ -32,16 +34,12 @@ const convertString = (stringToConvert) => {
                 convertedArr[pushCount] =convertedArr[pushCount].concat(element)
             }
             else {
-                //Otherwise push it. 
+                //Otherwise push it if it was an operator. 
                 convertedArr.push(element)
             }
         }
 
-        else if (parseInt(element) || element == "0"){
-            currentString = currentString.concat(element)
-        }
-
-        else if (element == "."){
+        else if (parseInt(element) || element == "0" || element == "."){
             currentString = currentString.concat(element)
         }
 
@@ -52,7 +50,6 @@ const convertString = (stringToConvert) => {
             currentString = ""
          } 
     }
-    console.log(convertedArr);
     return convertedArr;
 }
 
@@ -64,9 +61,6 @@ const calculate = (calculateArray) => {
 
     for (let index = 0; index < calculateArray.length; index++) {
         const currentTask = calculateArray[index];
-        console.log("Current Task " + currentTask)
-        console.log("Total value " + totalValue)
-
         switch (currentTask){
             case "+":
                 currentOperative = "+"
@@ -93,26 +87,23 @@ const calculate = (calculateArray) => {
                 if (index > 0){
                     if (currentOperative == "+"){
                         totalValue = addition(parseFloat(totalValue), parseFloat(currentTask));
-                        console.log("AFTER CALCULATION +" + totalValue);
                     }
 
                     else if (currentOperative == "-"){
                         totalValue = substration(parseFloat(totalValue), parseFloat(currentTask));
-                        console.log("AFTER CALCULATION -" + totalValue);
                     }
+
                     else if (currentOperative == "%"){
                         totalValue = percentage(totalValue, currentTask);
-                        console.log(totalValue);
                     }
 
                     else if (currentOperative == "x"){
                         totalValue = multiplication(parseFloat(totalValue), parseFloat(currentTask));
-                        console.log("AFTER CALCULATION x" + totalValue);
+       
                     }
 
                     else if (currentOperative == "/") {
                         totalValue = division(parseFloat(totalValue), parseFloat(currentTask));
-                        console.log("AFTER CALCULATION /" + totalValue);
                     } 
                     else{
                         console.log("This shouldnt happen D:");
@@ -133,7 +124,6 @@ const calculate = (calculateArray) => {
 
 //Functions for handling user input: 
 const handleOperator = (event) => {
-    console.log("OPERATOR " + event.target.innerText)
     numberDisplay.innerText += event.target.innerText    
 }
 
@@ -145,27 +135,25 @@ const handleCommand = (event) => {
         else{
             numberDisplay.innerText = numberDisplay.innerText.substring(0, numberDisplay.innerText.length-1)
         }
-        
     }
+
     else if (event.target.innerText == "C"){
         numberDisplay.innerText = "0"
     }
+
     else if (event.target.innerText == "="){
         let commandString = convertString(numberDisplay.innerText)
         numberDisplay.innerText = calculate(commandString);
     }
-    console.log("COMMAND " + event.target.innerText)
 }
 
 const handleNumber = (event) => {
-    console.log("NUMBER " + event.target.innerText)
     if (numberDisplay.innerText == "0"){
         numberDisplay.innerText = event.target.innerText
     }
     else{
         numberDisplay.innerText += event.target.innerText
-    }
-    
+    } 
 }
 
 operators.forEach(element => {
