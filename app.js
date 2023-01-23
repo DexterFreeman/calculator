@@ -158,6 +158,10 @@ const handleCommand = (event) => {
         numberDisplay.innerText = Math.ceil(parseFloat(numberDisplay.innerText))
     }
 
+    else if (event.target.innerText == "√"){
+        numberDisplay.innerText = Math.sqrt(parseFloat(numberDisplay.innerText))
+    }
+
     else if (event.target.innerText == "="){
         let commandString = convertString(numberDisplay.innerText)
         numberDisplay.innerText = calculate(commandString);
