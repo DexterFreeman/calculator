@@ -1,7 +1,10 @@
+//HTML Elements selected either by a query selector or getElementById
 const operators = document.querySelectorAll(".operator");
 const commands = document.querySelectorAll(".command");
 const numbers = document.querySelectorAll(".number");
 const numberDisplay = document.getElementById("calculator__display-answer")
+
+//Regex to check if inputted commands are valid. 
 const checkSpecialCharacters = /[`!@#$%^&*()_\=\[\]{};':"\\|,.<>\?~]/;
 const checkLetters = /[a-wA-Wy-zY-Z]/g;
 
@@ -67,7 +70,7 @@ const convertString = (stringToConvert) => {
 }
 
 
-//Takes in the array and calculates the final result. 
+//Takes in the array after convertString and calculates the final result, then returns it. 
 const calculate = (calculateArray) => {
     let totalValue = 0
     let currentOperative = ""
@@ -153,9 +156,10 @@ const handleOperator = (event) => {
 }
 
 const handleCommand = (event) => {
-
+    //The text of the button, as a way to tell which button was pressed, instead of using IDs. 
     switch (event.target.innerText) {
         case "Del":
+            //To stop deleting 0 if its just 0.
             if (numberDisplay.innerText.length == 1) {
                 numberDisplay.innerText = "0"
             }
@@ -188,6 +192,7 @@ const handleCommand = (event) => {
 }
 
 const handleNumber = (event) => {
+    //If the current number is 0 then don't concatenate it. 
     if (numberDisplay.innerText == "0") {
         numberDisplay.innerText = event.target.innerText
     }
@@ -196,6 +201,8 @@ const handleNumber = (event) => {
     }
 }
 
+
+//Adds event listeners for each type of button.
 operators.forEach(element => {
     element.addEventListener("click", handleOperator)
 });
