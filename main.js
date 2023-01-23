@@ -68,7 +68,7 @@ const convertString = (stringToConvert) => {
 console.log(convertString(calculationsString));
 
 */
-const calculations = ["4.874915326E7", "-", "1000",]
+const calculations = ["4", "*", "π",]
 const addition = (firstNumber, secondNumber) => parseInt(firstNumber) + parseInt(secondNumber)
 const substration = (firstNumber, secondNumber) => parseInt(firstNumber) - parseInt(secondNumber)
 const multiplication = (firstNumber, secondNumber) => parseInt(firstNumber) * parseInt(secondNumber)
@@ -87,7 +87,9 @@ const calculate = (calculateArray) => {
         }
         console.log("Current Task " + currentTask)
         console.log("Total value " + totalValue)
-
+        if (currentTask == "π"){
+            currentTask = Math.PI  
+        }
         switch (currentTask){
             case "+":
                 currentOperative = "+"

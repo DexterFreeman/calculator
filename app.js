@@ -63,11 +63,15 @@ const convertString = (stringToConvert) => {
 const calculate = (calculateArray) => {
     let totalValue = 0
     let currentOperative = ""
-
+    
     for (let index = 0; index < calculateArray.length; index++) {
         let currentTask = calculateArray[index];
+
         if (currentTask.includes("e")){
             currentTask = new Number(currentTask)
+        }
+        else if (currentTask == "π"){
+            currentTask = Math.PI  
         }
         switch (currentTask){
             case "+":
@@ -93,30 +97,31 @@ const calculate = (calculateArray) => {
             //OCCURS IF ITS A NUMBER
             default:
                 if (index > 0){
-                    if (currentOperative == "+"){
-                        totalValue = addition(parseFloat(totalValue), parseFloat(currentTask));
-                    }
+                    switch (currentOperative){
+                        case "+":
+                            totalValue = addition(parseFloat(totalValue), parseFloat(currentTask));
+                            break; 
+                        
+                        case "-":
+                            totalValue = substration(parseFloat(totalValue), parseFloat(currentTask));
+                            break;
 
-                    else if (currentOperative == "-"){
-                        totalValue = substration(parseFloat(totalValue), parseFloat(currentTask));
-                    }
+                        case "%":
+                            totalValue = percentage(totalValue, currentTask);
+                            break;
 
-                    else if (currentOperative == "%"){
-                        totalValue = percentage(totalValue, currentTask);
-                    }
+                        case "x":
+                            totalValue = multiplication(parseFloat(totalValue), parseFloat(currentTask));
+                            break;
+                        
+                        case "/":
+                            totalValue = division(parseFloat(totalValue), parseFloat(currentTask));
+                            break;
+                        
 
-                    else if (currentOperative == "x"){
-                        totalValue = multiplication(parseFloat(totalValue), parseFloat(currentTask));
-       
+                        default:
+                            console.log("This should never happen.");
                     }
-
-                    else if (currentOperative == "/") {
-                        totalValue = division(parseFloat(totalValue), parseFloat(currentTask));
-                    } 
-                    else{
-                        console.log("This shouldnt happen D:");
-                    }
-
                 }
 
                 else{
@@ -147,6 +152,10 @@ const handleCommand = (event) => {
 
     else if (event.target.innerText == "C"){
         numberDisplay.innerText = "0"
+    }
+
+    else if (event.target.innerText == "round"){
+        numberDisplay.innerText = Math.ceil(parseFloat(numberDisplay.innerText))
     }
 
     else if (event.target.innerText == "="){
