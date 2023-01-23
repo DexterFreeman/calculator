@@ -2,13 +2,14 @@ const operators = document.querySelectorAll(".operator");
 const commands = document.querySelectorAll(".command");
 const numbers = document.querySelectorAll(".number");
 const numberDisplay = document.getElementById("calculator__display-answer")
-
+const checkSpecialCharacters = /[`!@#$%^&*()_\=\[\]{};':"\\|,.<>\?~]/;
+const checkLetters = /[a-wA-Wy-zY-Z]/g;
 
 //Functions for calculations: 
-const addition = (firstNumber, secondNumber) => firstNumber+secondNumber
-const substration = (firstNumber, secondNumber) => firstNumber-secondNumber
-const multiplication = (firstNumber, secondNumber) => firstNumber*secondNumber
-const division = (firstNumber, secondNumber) => firstNumber/secondNumber
+const addition = (firstNumber, secondNumber) => firstNumber + secondNumber
+const substration = (firstNumber, secondNumber) => firstNumber - secondNumber
+const multiplication = (firstNumber, secondNumber) => firstNumber * secondNumber
+const division = (firstNumber, secondNumber) => firstNumber / secondNumber
 const percentage = (firstnumber, secondNumber) => (100 * firstnumber) / secondNumber
 
 
@@ -19,43 +20,50 @@ const convertString = (stringToConvert) => {
     let currentString = ""
     let pushCount = 0;
 
-    for (let index = 0; index < stringToConvert.length; index++) {
-        const element = stringToConvert[index];
-
-        //If it is the last item to add then:
-        if (index == stringToConvert.length-1){
-            //Push any previous item
-            convertedArr.push(currentString)
-            //If the last item pushed was a number then:
-            if (parseInt(convertedArr[pushCount]) || convertedArr[pushCount] == 0){
-                //Concat the current element to it e.g in string +22 this will result in the interaction of
-                //[+, 2] -> [+, 22]
-                convertedArr[pushCount] =convertedArr[pushCount].concat(element)
-            }
-            else {
-                //Otherwise push it if it was an operator. 
-                convertedArr.push(element)
-            }
-        }
-
-        else if (parseInt(element) || element == "0" || element == "."){
-            currentString = currentString.concat(element)
-        }
-        else if (element == "e"){
-            currentString = currentString.concat(element)
-            currentString = currentString.concat("+")
-            index ++; 
-        }
-
-        else{
-            if (currentString){convertedArr.push(currentString); pushCount++}
-            convertedArr.push(element)
-            pushCount++
-            currentString = ""
-         } 
+    if (checkLetters.test(stringToConvert || checkSpecialCharacters .test(stringToConvert))){
+        alert ("Error, input invalid")
+        return 0;
     }
-    console.log(convertedArr);
-    return convertedArr;
+    else {
+
+        for (let index = 0; index < stringToConvert.length; index++) {
+            const element = stringToConvert[index];
+
+            //If it is the last item to add then:
+            if (index == stringToConvert.length - 1) {
+                //Push any previous item
+                convertedArr.push(currentString)
+                //If the last item pushed was a number then:
+                if (parseInt(convertedArr[pushCount]) || convertedArr[pushCount] == 0) {
+                    //Concat the current element to it e.g in string +22 this will result in the interaction of
+                    //[+, 2] -> [+, 22]
+                    convertedArr[pushCount] = convertedArr[pushCount].concat(element)
+                }
+                else {
+                    //Otherwise push it if it was an operator. 
+                    convertedArr.push(element)
+                }
+            }
+
+            else if (parseInt(element) || element == "0" || element == ".") {
+                currentString = currentString.concat(element)
+            }
+            else if (element == "e") {
+                currentString = currentString.concat(element)
+                currentString = currentString.concat("+")
+                index++;
+            }
+
+            else {
+                if (currentString) { convertedArr.push(currentString); pushCount++ }
+                convertedArr.push(element)
+                pushCount++
+                currentString = ""
+            }
+        }
+        console.log(convertedArr);
+        return convertedArr;
+    }
 }
 
 
@@ -63,17 +71,20 @@ const convertString = (stringToConvert) => {
 const calculate = (calculateArray) => {
     let totalValue = 0
     let currentOperative = ""
-    
+
     for (let index = 0; index < calculateArray.length; index++) {
         let currentTask = calculateArray[index];
 
-        if (currentTask.includes("e")){
+        //Converts scientific notation to number
+        if (currentTask.includes("e")) {
             currentTask = new Number(currentTask)
         }
-        else if (currentTask == "π"){
-            currentTask = Math.PI  
+        
+        //Converts pi character to the numeric value
+        else if (currentTask == "π") {
+            currentTask = Math.PI
         }
-        switch (currentTask){
+        switch (currentTask) {
             case "+":
                 currentOperative = "+"
                 break;
@@ -86,7 +97,7 @@ const calculate = (calculateArray) => {
                 currentOperative = "x"
                 break;
 
-            case "-": 
+            case "-":
                 currentOperative = "-"
                 break;
 
@@ -94,14 +105,15 @@ const calculate = (calculateArray) => {
                 currentOperative = "/"
                 break;
 
-            //OCCURS IF ITS A NUMBER
+            //Default occurs if it's a number
             default:
-                if (index > 0){
-                    switch (currentOperative){
+                //If its the first number, add it to the totalValue 
+                if (index > 0) {
+                    switch (currentOperative) {
                         case "+":
                             totalValue = addition(parseFloat(totalValue), parseFloat(currentTask));
-                            break; 
-                        
+                            break;
+
                         case "-":
                             totalValue = substration(parseFloat(totalValue), parseFloat(currentTask));
                             break;
@@ -113,19 +125,19 @@ const calculate = (calculateArray) => {
                         case "x":
                             totalValue = multiplication(parseFloat(totalValue), parseFloat(currentTask));
                             break;
-                        
+
                         case "/":
                             totalValue = division(parseFloat(totalValue), parseFloat(currentTask));
                             break;
-                        
+
 
                         default:
                             console.log("This should never happen.");
                     }
                 }
-
-                else{
-                    totalValue = currentTask; 
+                
+                else {
+                    totalValue = currentTask;
                 }
         }
     }
@@ -137,44 +149,51 @@ const calculate = (calculateArray) => {
 
 //Functions for handling user input: 
 const handleOperator = (event) => {
-    numberDisplay.innerText += event.target.innerText    
+    numberDisplay.innerText += event.target.innerText
 }
 
 const handleCommand = (event) => {
-    if (event.target.innerText == "Del"){
-        if (numberDisplay.innerText.length == 1){
+
+    switch (event.target.innerText) {
+        case "Del":
+            if (numberDisplay.innerText.length == 1) {
+                numberDisplay.innerText = "0"
+            }
+            else {
+                numberDisplay.innerText = numberDisplay.innerText.substring(0, numberDisplay.innerText.length - 1)
+            }
+            break;
+        
+        case "C": 
             numberDisplay.innerText = "0"
-        }
-        else{
-            numberDisplay.innerText = numberDisplay.innerText.substring(0, numberDisplay.innerText.length-1)
-        }
-    }
+            break; 
+    
+        case "round":
+            numberDisplay.innerText = Math.ceil(parseFloat(numberDisplay.innerText));
+            break;
 
-    else if (event.target.innerText == "C"){
-        numberDisplay.innerText = "0"
-    }
+        case "√":
+            numberDisplay.innerText = Math.sqrt(parseFloat(numberDisplay.innerText))
+            break;
 
-    else if (event.target.innerText == "round"){
-        numberDisplay.innerText = Math.ceil(parseFloat(numberDisplay.innerText))
-    }
+        case "=":
+            let commandString = convertString(numberDisplay.innerText)
+            numberDisplay.innerText = calculate(commandString);
+            break;
 
-    else if (event.target.innerText == "√"){
-        numberDisplay.innerText = Math.sqrt(parseFloat(numberDisplay.innerText))
-    }
+        default:
+            alert("Error: Command not found, invalid input.");
 
-    else if (event.target.innerText == "="){
-        let commandString = convertString(numberDisplay.innerText)
-        numberDisplay.innerText = calculate(commandString);
     }
 }
 
 const handleNumber = (event) => {
-    if (numberDisplay.innerText == "0"){
+    if (numberDisplay.innerText == "0") {
         numberDisplay.innerText = event.target.innerText
     }
-    else{
+    else {
         numberDisplay.innerText += event.target.innerText
-    } 
+    }
 }
 
 operators.forEach(element => {
