@@ -6,7 +6,7 @@ const numberDisplay = document.getElementById("calculator__display-answer")
 
 //Regex to check if inputted commands are valid. 
 const checkSpecialCharacters = /[`!@#$%^&*()_\=\[\]{};':"\\|,.<>\?~]/;
-const checkLetters = /[a-wA-Wy-zY-Z]/g;
+const checkLetters = /[a-dA-Df-wF-Wy-zY-Z]/g;
 
 //Functions for calculations: 
 const addition = (firstNumber, secondNumber) => firstNumber + secondNumber
