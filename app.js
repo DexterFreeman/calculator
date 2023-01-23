@@ -1,7 +1,7 @@
 const operators = document.querySelectorAll(".operator");
 const commands = document.querySelectorAll(".command");
 const numbers = document.querySelectorAll(".number");
-const numberDisplay = document.getElementById("answerDisplay")
+const numberDisplay = document.getElementById("calculator__display-answer")
 
 
 //Functions for calculations: 

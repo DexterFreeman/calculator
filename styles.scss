@@ -62,7 +62,13 @@ body {
                 background-color: $button-color;
             }
 
+            .calculator__buttons-equals{
+                grid-column-end: 4;
+                grid-column-start: 4;
+                grid-row-end: 7;
+                grid-row-start: 5;
 
+            }
             a:hover {
                 background-color: rgb(31, 31, 84);
             }
