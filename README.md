@@ -1,6 +1,6 @@
 # Calculator App
 This is a calculator app which was a project I built between weeks 2-3 of my _nology course. 
-You can view my portfolio via github pages using this link: [https://dexterfreeman.github.io/calculator/](https://dexterfreeman.github.io/calculator/). 
+You can view my calculator via github pages using this link: [https://dexterfreeman.github.io/calculator/](https://dexterfreeman.github.io/calculator/). 
 
 
 ## Stack: 
