@@ -26,4 +26,4 @@ Each sum is comprised of 3 parts: A number, an operative and then another number
 Within my code, the first number is always "currentTotal" because the calculations are always done from left to right. The operative is tracked by the "currentOperative" variable and for the last part of the sum, I simply use the current element of the for loop ("currentTask").
 
 
-![image of project](https://ibb.co/t4cZv7K)
+![image of project](https://i.ibb.co/802zfWs/frontend-image.jpg)
