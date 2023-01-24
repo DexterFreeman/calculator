@@ -53,17 +53,18 @@ body .calculator .calculator__buttons a {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(12, 12, 51);
+  background-color: rgb(198, 198, 251);
+}
+body .calculator .calculator__buttons a:hover {
+  background-color: rgb(155, 155, 211);
+}
+body .calculator .calculator__buttons a:active {
+  background-color: rgb(149, 149, 222);
 }
 body .calculator .calculator__buttons .calculator__buttons-equals {
   grid-column-end: 4;
   grid-column-start: 4;
   grid-row-end: 7;
   grid-row-start: 5;
-}
-body .calculator .calculator__buttons a:hover {
-  background-color: rgb(31, 31, 84);
-}
-body .calculator .calculator__buttons a:active {
-  background-color: rgb(63, 63, 124);
+  background-color: rgb(127, 195, 255);
 }/*# sourceMappingURL=styles.css.map */
