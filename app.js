@@ -20,17 +20,21 @@ const percentage = (firstnumber, secondNumber) => (100 * firstnumber) / secondNu
 //Converts string of calculation into a usable array
 // "10-9+5" -> [10, "-", 9, +, "5"]
 const convertString = (stringToConvert) => {
-    addLastCalculation(stringToConvert);
+   
     let convertedArr = []
     let currentString = ""
     let pushCount = 0;
 
+
+    //Adds the calculation to the list of calculations done.
+    addLastCalculation(stringToConvert);
+
+    //Is the command valid? If yes, continue if not then alert the user.
     if (checkLetters.test(stringToConvert || checkSpecialCharacters .test(stringToConvert))){
         alert ("Error, input invalid")
         return 0;
     }
     else {
-
         for (let index = 0; index < stringToConvert.length; index++) {
             const element = stringToConvert[index];
 
@@ -66,7 +70,6 @@ const convertString = (stringToConvert) => {
                 currentString = ""
             }
         }
-        console.log(convertedArr);
         return convertedArr;
     }
 }

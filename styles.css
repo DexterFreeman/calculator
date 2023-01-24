@@ -40,7 +40,6 @@ body .calculator .calculator__display p {
   font-size: 2rem;
   margin-right: 2%;
   background-color: rgb(255, 255, 255);
-  text-align: right;
 }
 body .calculator .calculator__buttons {
   height: 40%;
