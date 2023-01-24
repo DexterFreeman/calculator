@@ -69,7 +69,7 @@ const convertString = (stringToConvert) => {
     }
 }
 
-
+//Function for all the logic of the calculator itself. 
 //Takes in the array after convertString and calculates the final result, then returns it. 
 const calculate = (calculateArray) => {
     let totalValue = 0
@@ -151,10 +151,11 @@ const calculate = (calculateArray) => {
 
 
 //Functions for handling user input: 
+//Handles input for operators. 
 const handleOperator = (event) => {
     numberDisplay.innerText += event.target.innerText
 }
-
+//Handles each command, commands being buttons that aren't added to the display
 const handleCommand = (event) => {
     //The text of the button, as a way to tell which button was pressed, instead of using IDs. 
     switch (event.target.innerText) {
@@ -173,7 +174,7 @@ const handleCommand = (event) => {
             break; 
     
         case "round":
-            numberDisplay.innerText = Math.ceil(parseFloat(numberDisplay.innerText));
+            numberDisplay.innerText = Math.round(parseFloat(numberDisplay.innerText));
             break;
 
         case "√":
