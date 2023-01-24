@@ -5,16 +5,17 @@ You can view my calculator via github pages using this link: [https://dexterfree
 
 ## Stack: 
 
-HTML, CSS, Vanilla JS
+HTML, SASS, Vanilla JS
 
 ## Functionality: 
 - Numbers 0-9 with decimals.
 - Addition, Subtraction, Multiplication, Division
--Scientific notation
--Square root
+- Scientific notation
+- Square root
 - PI
 - Percentages
 - Rounds to whole number
+- Keeps a list of all calculations
 
 ## Logic: 
 
@@ -27,4 +28,4 @@ Each sum is comprised of 3 parts: A number, an operative and then another number
 Within my code, the first number is always "currentTotal" because the calculations are always done from left to right. The operative is tracked by the "currentOperative" variable and for the last part of the sum, I simply use the current element of the for loop ("currentTask").
 
 
-![image of project](https://i.ibb.co/802zfWs/frontend-image.jpg)
+![image of project](https://i.ibb.co/Lp2GyNJ/frontend-image.jpg)
