@@ -2,7 +2,8 @@
 const operators = document.querySelectorAll(".operator");
 const commands = document.querySelectorAll(".command");
 const numbers = document.querySelectorAll(".number");
-const numberDisplay = document.getElementById("calculator__display-answer")
+const numberDisplay = document.getElementById("calculator__display-answer");
+const calcStore = document.querySelector(".oldCalculations");
 
 //Regex to check if inputted commands are valid. 
 const checkSpecialCharacters = /[`!@#$%^&*()_\=\[\]{};':"\\|,.<>\?~]/;
@@ -19,6 +20,7 @@ const percentage = (firstnumber, secondNumber) => (100 * firstnumber) / secondNu
 //Converts string of calculation into a usable array
 // "10-9+5" -> [10, "-", 9, +, "5"]
 const convertString = (stringToConvert) => {
+    addLastCalculation(stringToConvert);
     let convertedArr = []
     let currentString = ""
     let pushCount = 0;
@@ -147,7 +149,9 @@ const calculate = (calculateArray) => {
     return totalValue;
 }
 
-
+const addLastCalculation = (calculationToAdd) => {
+    calcStore.innerHTML += `<h1>${calculationToAdd}</h1>`
+}
 
 
 //Functions for handling user input: 
@@ -174,10 +178,12 @@ const handleCommand = (event) => {
             break; 
     
         case "round":
+            addLastCalculation("Round " + numberDisplay.innerText)
             numberDisplay.innerText = Math.round(parseFloat(numberDisplay.innerText));
             break;
 
         case "√":
+            addLastCalculation("√" + numberDisplay.innerText)
             numberDisplay.innerText = Math.sqrt(parseFloat(numberDisplay.innerText))
             break;
 
