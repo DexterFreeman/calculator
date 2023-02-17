@@ -1,0 +1,24 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "This is a calculator app which was a project I built between weeks 2-3 of my _nology course. \r You can view my calculator via github pages using this link: [https://dexterfreeman.github.io/calculator/](https://dexterfreeman.github.io/calculator/).",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DexterFreeman/calculator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DexterFreeman/calculator/issues"
+  },
+  "homepage": "https://github.com/DexterFreeman/calculator#readme",
+  "devDependencies": {
+    "cypress": "^12.4.1"
+  }
+}
